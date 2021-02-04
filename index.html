@@ -5,18 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matt's Todo List App</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/39cd520853.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>Matt's Evergrowing ToDo List</header>
 
-    <div id="appContainer">
-        <div id="projectList"></div>
-        <div id="projectDisplay">
-            <div id="projectName">Default</div>
-            <input id="addToDo" type="text" placeholder="Add a ToDo">
-            <div id="toDoContainer"></div>
+    <div id="app-container">
+
+        <div id="project-list-wrapper">
+            <div class="project-name-card">Default</div>
         </div>
-        <div id="toDoInfo"></div>
+
+        <div id="project-display">
+            <div id="project-name">Default</div>
+
+            <div id="input-wrapper">
+                <div id="plus-button">
+                    <i class="fas fa-plus"></i>
+                </div>
+                
+                <div id="important-input" class="not-important">
+                    <i class="fas fa-star"></i> 
+                </div>
+                              
+                <input id="add-to-do" type="text" placeholder="type here and press Enter key">
+            </div>
+            
+            <div id="to-do-container"></div>
+        </div>
+
+        <div id="to-do-info"></div>
+
     </div>
 
 

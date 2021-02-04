@@ -18,19 +18,31 @@ header {
     font-size: 1.25rem;
 }
 
-#appContainer {
+#app-container {
     width: 100%;
     height: 90vh;
     border: 1px solid red;
     display: flex;
 }
 
-#projectList {
+#project-list-wrapper {
     width: 20%;
     border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+
 }
 
-#projectDisplay {
+.project-name-card {
+    border: 1px solid blue;
+    width: 90%;
+    margin: 1rem auto;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+#project-display {
     width: 65%;
     border: 2px solid purple;
     display: flex;
@@ -38,28 +50,103 @@ header {
     align-items: center;
 }
 
-#projectName {
+#project-name {
     /* border: 1px solid green; */
     width: 90%;
     padding: 1rem;
     font-size: 1.25rem;
 }
 
-#addToDo {
+#input-wrapper {
+    position: relative;
     width: 90%;
-    margin: 0 1rem;
+}
+
+#add-to-do {
+    width: 100%;
     padding: 1rem;
     text-indent: 2rem;
     font-size: 1rem;
 }
 
-#toDoContainer {
-    border: 2px solid pink;
+#plus-button {
+    position: absolute;
+    /* border: 1px solid red; */
+    width: 2.5%;
+    height: 1.5rem;
+    /* cursor: pointer; */
+    left: 1.5%;
+    top: 30%;
+}
+
+.fa-plus {
+    color: rgb(0, 140, 255);
+    font-size: 1.5rem;
+    position: absolute;
+    cursor: pointer;
+}
+
+#important-input {
+    position: absolute;
+    /* border: 1px solid red; */
+    width: 2.5%;
+    height: 1.5rem;
+    right: 1.5%;
+    top: 30%;
+}
+
+.not-important {
+    color: gray;
+}
+
+.important {
+    color: orange;
+}
+
+.fa-star {
+    font-size: 1.25rem;
+    position: absolute;
+    cursor: pointer;
+}
+
+#to-do-container {
     width: 90%;
     min-height: 75%;
 }
 
-#toDoInfo {
+.to-do-wrapper {
+    position: relative;
+}
+
+.card-star {
+    color: gray;
+    font-size: 1rem;
+    position: absolute;
+    cursor: pointer;
+    right: 2%;
+    top: 33%;
+}
+
+.card-check {
+    color: gray;
+    font-size: 1.25rem;
+    position: absolute;
+    cursor: pointer;
+    left: 1.5%;
+    top: 30%;
+}
+
+.to-do-card {
+    width: 100%;
+    border: 1px solid orange;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: .5rem 0;
+    font-size: 1rem;
+    text-indent: 2rem;
+}
+
+#to-do-info {
     width: 25%;
     border: 2px solid blue;
 }

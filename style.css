@@ -21,7 +21,7 @@ header {
 #app-container {
     width: 100%;
     height: 90vh;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
 }
 
@@ -44,7 +44,7 @@ header {
 
 #project-display {
     width: 65%;
-    border: 2px solid purple;
+    /* border: 2px solid purple; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -111,7 +111,8 @@ header {
 
 #to-do-container {
     width: 90%;
-    min-height: 75%;
+    /* height: 50%; */
+    /* border: 1px solid purple; */
 }
 
 .to-do-wrapper {
@@ -146,7 +147,20 @@ header {
     text-indent: 2rem;
 }
 
+#completed-header {
+    padding: 1rem;
+    border: 1px solid green;
+    border-radius: 4px;
+    width: 90%;
+}
+
+#completed-container {
+    /* border: 1px solid red; */
+    width: 90%;
+    /* min-height: 25%; */
+}
+
 #to-do-info {
     width: 25%;
-    border: 2px solid blue;
+    border: 2px solid green;
 }

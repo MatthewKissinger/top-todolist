@@ -1,11 +1,10 @@
 // To DO list for the To do app lol
 
-// 1) create a button on the todo List items that will place them in a completed array for each project -- DONE!
-//  a) add a delegated event lister to push the toDo item into the completed array -- DONE!
-//  b) create a completedArray container below the toDoArray container -- DONE!
-//  c) render the completedArray items into the container -- DONE!
-// 2) create an event listener on the completed header div,  it will display or hide the completed container when clicked
-
+// 1) add chevrons for expanding or contracting the container -- DONE!
+// 2) create an input field in the project list container to add a project to the projects Array
+//  a) needs a name, toDoArray, and completedArray
+//  b) use a factory function to have this created
+//  c) look at the toDo item generator as a template
 
 // cacheDOM for the entire App
 const projectList = document.querySelector('#project-list-wrapper');
@@ -13,7 +12,6 @@ const projectDisplay = document.querySelector('#project-display');
 const toDoInfo = document.querySelector('#to-do-info');
 
 // Project Storage
-
 
 // default project created for demo, testing, and styling purposes
 let projectsArray = [
@@ -144,10 +142,10 @@ function renderToDoList() {
         toDoContainer.appendChild(toDoTemplate(item['title'], item['priority']));
     }); 
 }
-
+// card creation for the DOM
 function toDoTemplate(title, priority) {
     let toDoWrapper = document.createElement('div');
-    toDoWrapper.classList.add('to-do-wrapper');
+    toDoWrapper.classList.add('to-do-wrapper', 'card');
 
     let toDoStar = document.createElement('i');
     toDoStar.classList.add('fas', 'fa-star', 'card-star');
@@ -204,6 +202,7 @@ function toDoDelegation(e) {
         } 
     renderToDoList();   
     completedList.renderCompletedArray();
+    completedList.displayTotal();
     }    
 }
 
@@ -219,31 +218,90 @@ let completedList = (function() {
 
 //cache DOM
 let completedContainer = document.querySelector('#completed-container');
+completedContainer.style.display = 'none';
+let completedHeader = document.querySelector('#completed-header');
+let completedTotal = document.querySelector('#completed-total');
+let expandContainer = document.querySelector('#expand-container');
 
-renderCompletedArray();
+//bind events
+completedHeader.addEventListener('click', displayContainer);
+completedContainer.addEventListener('click', cancelComplete);
+
+
+function displayContainer() {
+    if (completedContainer.style.display === 'none') {
+        completedContainer.style.display = 'block';
+        expandContainer.innerHTML = '<i class="fas fa-chevron-up card-chevron"></i>';
+        renderCompletedArray();
+    } else {
+        completedContainer.style.display = 'none';
+        expandContainer.innerHTML = '<i class="fas fa-chevron-down card-chevron"></i>';
+
+    }
+}
 
 function renderCompletedArray() {
     completedContainer.innerHTML = '';
     projectsArray[input.index].completedArray.forEach(item => {
-        completedContainer.appendChild(template(item['title']));
+        completedContainer.appendChild(template(item['title'], item['priority']));
     }); 
 }
 
-function template(title) {
+function template(title, priority) {
     let wrapper = document.createElement('div');
-    wrapper.classList.add('to-do-wrapper');
+    wrapper.classList.add('to-do-wrapper', 'card');
 
     let toDoCard = document.createElement('div');
     toDoCard.classList.add('to-do-card');
     toDoCard.innerText = `${title}`;
 
+    let toDoStar = document.createElement('i');
+    toDoStar.classList.add('fas', 'fa-star', 'card-star');
+    if (priority === 'notImportant') {
+        toDoStar.style.color = 'gray';
+    } else {
+        toDoStar.style.color = 'orange';
+    }
+
+    let cancelComplete = document.createElement('i');
+    cancelComplete.classList.add('fas', 'fa-ban', 'card-cancel');
+
     wrapper.appendChild(toDoCard);
+    wrapper.appendChild(toDoStar);
+    wrapper.appendChild(cancelComplete);
 
     return wrapper;
 }
 
+function cancelComplete(e) {
+    const target = e.target;
+    let targetDValue = target.getAttribute('d');
+    let cancelDValue = 'M256 8C119.034 8 8 119.033 8 256s111.034 248 248 248 248-111.034 248-248S392.967 8 256 8zm130.108 117.892c65.448 65.448 70 165.481 20.677 235.637L150.47 105.216c70.204-49.356 170.226-44.735 235.638 20.676zM125.892 386.108c-65.448-65.448-70-165.481-20.677-235.637L361.53 406.784c-70.203 49.356-170.226 44.736-235.638-20.676z';
+    let closest = target.closest('div');
+
+    if (closest.querySelector('.to-do-card') === null) {
+        return;
+    } else {
+        let toDoTitle = closest.querySelector('.to-do-card').innerText;
+        let toDoIndex = projectsArray[input.index]['completedArray'].findIndex(x => x.title === toDoTitle);
+
+        if (target.matches('svg.fa-ban') || cancelDValue === targetDValue) {
+            projectsArray[input.index]['toDoArray'].push(projectsArray[input.index]['completedArray'][toDoIndex]);
+            projectsArray[input.index]['completedArray'].splice(toDoIndex, 1);
+        } 
+        renderCompletedArray();
+        toDoList.rendertoDoList();
+        displayTotal();
+    }
+}
+
+function displayTotal() {
+    completedTotal.innerText = `Total: ${projectsArray[input.index]['completedArray'].length}`;
+}
+
 return {
-    renderCompletedArray: renderCompletedArray
+    renderCompletedArray: renderCompletedArray,
+    displayTotal: displayTotal
 }
 
 })();

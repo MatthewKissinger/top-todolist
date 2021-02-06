@@ -13,13 +13,14 @@
     <div id="app-container">
 
         <div id="project-list-wrapper">
-            <div class="project-name-card">Default</div>
+            <div class="project-name-card card">Default</div>
         </div>
 
         <div id="project-display">
+
             <div id="project-name">Default</div>
 
-            <div id="input-wrapper">
+            <div id="input-wrapper" class="card">
                 <div id="plus-button">
                     <i class="fas fa-plus"></i>
                 </div>
@@ -30,18 +31,22 @@
             </div>
             
             <div id="to-do-container"></div>
-            <div id="completed-header">
+
+            <div id="completed-header" class="card">
                 <h2>Completed</h2>
+                <h4 id="completed-total">Total: 1</h4>
+                <div id="expand-container">
+                    <i class="fas fa-chevron-down card-chevron"></i>
+                </div>
             </div>
+
             <div id="completed-container"></div>
+
         </div>
 
         <div id="to-do-info"></div>
 
     </div>
-
-
-
 
     <script src="main.js"></script>
 </body>

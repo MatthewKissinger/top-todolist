@@ -11,10 +11,20 @@
     <header>Matt's Evergrowing ToDo List</header>
 
     <div id="app-container">
+        <div id="project-list-container">
+            <div id="project-list-wrapper">
+                <div class="project-name-card card">Default</div>
+            </div>
 
-        <div id="project-list-wrapper">
-            <div class="project-name-card card">Default</div>
+            <div id="project-input-wrapper" class="card">
+                <div id="project-plus-button">
+                    <i class="fas fa-plus"></i>
+                </div>
+                                
+                <input id="add-project" type="text" placeholder="type here and press Enter">
+            </div>
         </div>
+        
 
         <div id="project-display">
 
@@ -48,6 +58,6 @@
 
     </div>
 
-    <script src="main.js"></script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

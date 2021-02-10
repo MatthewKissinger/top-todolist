@@ -25,37 +25,71 @@ header {
 #app-container {
     width: 100%;
     height: 90vh;
-    /* border: 1px solid red; */
     display: flex;
 }
 
-#project-list-wrapper {
+#project-list-container {
     width: 20%;
     border: 2px solid lightblue;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
 
+#project-list-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .project-name-card {
     border: 1px solid orange;
     width: 90%;
-    margin: 1rem auto;
+    margin: .5rem;
     padding: 1rem;
     font-size: 1rem;
     border-radius: 4px;
+    cursor: pointer;
+}
+
+.project-name-card:hover {
+    opacity: .7;
+    background-color: linen;
+}
+
+#project-input-wrapper {
+    margin-top: 1rem;
+    position: relative;
+    width: 90%;
+}
+
+#add-project {
+    width: 100%;
+    padding: .75rem;
+    text-indent: 2rem;
+    font-size: .8rem;
+}
+
+#project-plus-button {
+    position: absolute;
+    height: 1rem;
+    left: 3%;
+    top: 28%;
+}
+
+#project-plus-button .fa-plus {
+    font-size: 1.3rem;
 }
 
 #project-display {
     width: 65%;
-    /* border: 2px solid purple; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 #project-name {
-    /* border: 1px solid green; */
     width: 90%;
     padding: 1rem;
     font-size: 1.25rem;
@@ -75,10 +109,8 @@ header {
 
 #plus-button {
     position: absolute;
-    /* border: 1px solid red; */
     width: 2.5%;
     height: 1.5rem;
-    /* cursor: pointer; */
     left: 1.5%;
     top: 30%;
 }
@@ -96,7 +128,6 @@ header {
 
 #important-input {
     position: absolute;
-    /* border: 1px solid red; */
     width: 2.5%;
     height: 1.5rem;
     right: 1.5%;
@@ -123,8 +154,6 @@ header {
 
 #to-do-container {
     width: 90%;
-    /* height: 50%; */
-    /* border: 1px solid purple; */
 }
 
 .to-do-wrapper {

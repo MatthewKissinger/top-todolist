@@ -13,19 +13,16 @@
     <div id="app-container">
         <div id="project-list-container">
             <div id="project-list-wrapper">
-                <div class="project-name-card card">Default</div>
             </div>
 
             <div id="project-input-wrapper" class="card">
                 <div id="project-plus-button">
                     <i class="fas fa-plus"></i>
-                </div>
-                                
+                </div>                   
                 <input id="add-project" type="text" placeholder="type here and press Enter">
             </div>
         </div>
         
-
         <div id="project-display">
 
             <div id="project-name">Default</div>
@@ -54,8 +51,37 @@
 
         </div>
 
-        <div id="to-do-info"></div>
+        <div id="to-do-display">
 
+            <div id="to-do-display-container">
+
+                <div class="to-do-wrapper card">
+                    <div id="to-do-title">Laundry</div>
+                    <i class="fas fa-star card-star"></i>
+                </div>
+                  
+                <div id="step-container">
+                    <div class="step-wrapper">Whites</div>
+                    <div class="step-wrapper">Brights</div>
+                </div>
+    
+                <div id="add-step-wrapper">
+                    <input id="add-step" type="text" placeholder="add a step">
+                </div>
+    
+                <div id="due-date-wrapper">
+                    <i>calendar icon</i>
+                    <div id="due-date">Add due date</div>
+                </div>
+    
+                <div id="notes-wrapper">
+                    <input id="to-do-notes" type="text" placeholder="add notes here">
+                </div>
+
+            </div>
+
+        </div>
+            
     </div>
 
     <script type="module" src="scripts/main.js"></script>

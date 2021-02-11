@@ -44,6 +44,7 @@ header {
 }
 
 .project-name-card {
+    position: relative;
     border: 1px solid orange;
     width: 90%;
     margin: .5rem;
@@ -56,6 +57,12 @@ header {
 .project-name-card:hover {
     opacity: .7;
     background-color: linen;
+}
+
+.project-delete {
+    position: absolute;
+    color: gray;
+    right: 5%;
 }
 
 #project-input-wrapper {
@@ -156,10 +163,6 @@ header {
     width: 90%;
 }
 
-.to-do-wrapper {
-    position: relative;
-}
-
 .card-star {
     color: gray;
     font-size: 1rem;
@@ -183,6 +186,7 @@ header {
 }
 
 .to-do-wrapper {
+    position: relative;
     width: 100%;
     border: 1px solid orange;
     border-radius: 4px;
@@ -190,6 +194,7 @@ header {
     margin: .5rem 0;
     font-size: 1rem;
     text-indent: 2rem;
+    cursor: pointer;
 }
 
 #completed-header {
@@ -237,7 +242,12 @@ header {
     color: lightblue;
 }
 
-#to-do-info {
+#to-do-display {
     width: 25%;
     border: 2px solid lightblue;
+}
+
+#to-do-display-container {
+    width: 90%;
+    margin: 0 auto;
 }

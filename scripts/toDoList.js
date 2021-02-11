@@ -3,7 +3,6 @@ import { projectsArray } from './projectsArray.js'
 import { inputToDo } from './inputToDo.js'
 import { completedList } from './completed.js'
 
-
 // toDoList Module -- displays each itme in the toDoArray for for the particular project
 
 let toDoList = (function() {
@@ -26,6 +25,7 @@ let toDoList = (function() {
     function toDoTemplate(title, priority) {
         let toDoWrapper = document.createElement('div');
         toDoWrapper.classList.add('to-do-wrapper', 'card');
+        toDoWrapper.innerText = `${title}`;
     
         let toDoStar = document.createElement('i');
         toDoStar.classList.add('fas', 'fa-star', 'card-star');
@@ -36,15 +36,10 @@ let toDoList = (function() {
         }
     
         let toDoCheck = document.createElement('i');
-        toDoCheck.classList.add('fas', 'fa-check', 'card-check');
-    
-        let toDoCard = document.createElement('div');
-        toDoCard.classList.add('to-do-card');
-        toDoCard.innerText = `${title}`;
+        toDoCheck.classList.add('fas', 'fa-check', 'card-check')
     
         toDoWrapper.appendChild(toDoStar);
         toDoWrapper.appendChild(toDoCheck);
-        toDoWrapper.appendChild(toDoCard);
     
         return toDoWrapper;
     };
@@ -58,33 +53,36 @@ let toDoList = (function() {
         let checkDValue = 'M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z';
         
         let closest = target.closest('div');
-      
-        // this first conditional is to eliminate an uncaught type error
-        if (closest.querySelector('.to-do-card') === null) {
-            return;
-        } else {
-            let toDoTitle = closest.querySelector('.to-do-card').innerText;
-            let toDoIndex = projectsArray[inputToDo.index]['toDoArray'].findIndex(x => x.title === toDoTitle);
-            let toDoObject = projectsArray[inputToDo.index]['toDoArray'][toDoIndex];
-    
-            // important toggle delegation
-            if (target.matches('svg.fa-star') || starDValue === targetDValue ) {
-                let toDoPriority = toDoObject['priority'];
+        let toDoTitle = closest.innerText;
+        let toDoIndex = projectsArray[inputToDo.index]['toDoArray'].findIndex(x => x.title === toDoTitle);
+        let toDoObject = projectsArray[inputToDo.index]['toDoArray'][toDoIndex];
+
+        // display toDoCard info to the right
+        if (target.matches('div.to-do-wrapper')) {
+            console.log(toDoTitle);
+            console.log(toDoIndex);
+            console.log(toDoObject);
+        } 
+
+        // important toggle delegation
+        if (target.matches('svg.fa-star') || starDValue === targetDValue ) {
+            let toDoPriority = toDoObject['priority'];
             
-            if (toDoPriority === 'important') {
-                toDoObject['priority'] = 'notImportant';
-            } else if (toDoPriority === 'notImportant') {
-                toDoObject['priority'] = 'important';
-            }
-            }   // checkmark to completed Array delegation
-                else if (target.matches('svg.fa-check') || checkDValue === targetDValue) {
-                    projectsArray[inputToDo.index]['completedArray'].push(projectsArray[inputToDo.index]['toDoArray'][toDoIndex]);
-                    projectsArray[inputToDo.index]['toDoArray'].splice(toDoIndex, 1);    
-            } 
+        if (toDoPriority === 'important') {
+            toDoObject['priority'] = 'notImportant';
+        } else if (toDoPriority === 'notImportant') {
+            toDoObject['priority'] = 'important';
+        }
+        }   // checkmark to completed Array delegation
+            else if (target.matches('svg.fa-check') || checkDValue === targetDValue) {
+                projectsArray[inputToDo.index]['completedArray'].push(projectsArray[inputToDo.index]['toDoArray'][toDoIndex]);
+                projectsArray[inputToDo.index]['toDoArray'].splice(toDoIndex, 1);    
+        }   
+        
         renderToDoList();   
         completedList.renderCompletedArray();
         completedList.displayTotal();
-        }    
+          
     }
     
     return {

@@ -1,6 +1,4 @@
 
-
-
 // default project created for demo, testing, and styling purposes
 let projectsArray = [
     {
@@ -40,7 +38,7 @@ let projectsArray = [
             {
                 title: "Finish ToDoList App", 
                 dueDate: "", 
-                priority: "Important", 
+                priority: "important", 
                 notes: "", 
                 checklist: "",
                 origin: "Default"

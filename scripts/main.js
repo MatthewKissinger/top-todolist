@@ -1,8 +1,16 @@
 // To DO list for the To do app lol
 
-// 1) give the project cards a delete button -- DONE!
-// 2) setup the rightside of the app - this will display the toDo items info when selected by a delegation
-//  a) do a mock setup in HTML to style accordingly
+// 1) add a steps Array for each toDo list item
+//  a) will have to be added in the toDoFactory
+//  b) give the Default project a toDoList item with a few steps for rendering tests
+// 2) render the toDoList items details 
+// 3) add the complete and delete functions to the step cards
+// 4) have the toDoDisplay container set to display: none; by default
+//  a) when clicking on a toDo item it will display
+//  b) clicking on another project name will set it back to display: none;
+
+// Ideas 
+// ** add sounds to the app on completed, deleted, starred, added processes
 
 import { projectsArray, showProjectsArray } from './projectsArray.js'
 import { completedList } from './completed.js'
@@ -25,7 +33,6 @@ const _plusButton = document.querySelector('#project-plus-button');
 projectList.addEventListener('click', projectDelegation);
 _inputField.addEventListener('keydown', addProject);
 _plusButton.addEventListener('click', addProject);
-
 
 renderProjectList();
 

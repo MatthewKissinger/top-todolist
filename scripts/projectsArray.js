@@ -10,7 +10,8 @@ let projectsArray = [
                 priority: "important",
                 notes: "",
                 checklist: "",
-                origin: "Default"
+                origin: "Default", 
+                steps: []
             },
             {
                 title: "Yoga",
@@ -18,7 +19,8 @@ let projectsArray = [
                 priority: "notImportant",
                 notes: "",
                 checklist: "",
-                origin: "Default"
+                origin: "Default",
+                steps: []
             }
         ],
         completedArray: [
@@ -28,7 +30,8 @@ let projectsArray = [
                 priority: "notImportant", 
                 notes: "", 
                 checklist: "",
-                origin: "Default"
+                origin: "Default",
+                steps: []
             }
         ]
     },
@@ -41,7 +44,8 @@ let projectsArray = [
                 priority: "important", 
                 notes: "", 
                 checklist: "",
-                origin: "Default"
+                origin: "Default",
+                steps: []
             }
         ],
         completedArray: []

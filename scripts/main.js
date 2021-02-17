@@ -1,13 +1,10 @@
 // To DO list for the To do app lol
 
-// 1) add a steps Array for each toDo list item
-//  a) will have to be added in the toDoFactory
-//  b) give the Default project a toDoList item with a few steps for rendering tests
-// 2) render the toDoList items details 
-// 3) add the complete and delete functions to the step cards
-// 4) have the toDoDisplay container set to display: none; by default
-//  a) when clicking on a toDo item it will display
-//  b) clicking on another project name will set it back to display: none;
+// 1) create a stepFactory function
+// 2) render the steps with the checked value styling
+// 3) when the checkmark is selected for a step
+//  a) the checked value in the object changes to true
+
 
 // Ideas 
 // ** add sounds to the app on completed, deleted, starred, added processes
@@ -16,10 +13,10 @@ import { projectsArray, showProjectsArray } from './projectsArray.js'
 import { completedList } from './completed.js'
 import { toDoList } from './toDoList.js'
 import { inputToDo } from './inputToDo.js'
+import { toDoDisplay } from './toDoDisplay.js'
 
 // cacheDOM for the entire App
 const projectDisplay = document.querySelector('#project-display');
-const toDoInfo = document.querySelector('#to-do-info');
 
 // project list Module
 let projects = (function() {

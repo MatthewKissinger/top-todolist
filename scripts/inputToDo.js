@@ -36,9 +36,7 @@ let inputToDo = (function() {
                     priority = 'notImportant';
                 }
                 let notes = '';
-                let checklist = '';
-                let origin = projectName.innerText;
-                let newToDo = new toDoFactory(name, dueDate, priority, notes, checklist, origin);
+                let newToDo = new toDoFactory(name, dueDate, priority, notes);
                 index = projectsArray.findIndex(x => x.name === projectName.innerText);
                 
                 projectsArray[index]['toDoArray'].push(newToDo);
@@ -49,9 +47,9 @@ let inputToDo = (function() {
         }
     }
     
-    function toDoFactory(title, dueDate, priority, notes, checklist) {
+    function toDoFactory(title, dueDate, priority, notes, steps) {
         return {
-            title, dueDate, priority, notes, checklist
+            title, dueDate, priority, notes, steps
         }
     };
     

@@ -8,19 +8,25 @@ let projectsArray = [
                 title: "Laundry",
                 dueDate: "",
                 priority: "important",
-                notes: "",
-                checklist: "",
-                origin: "Default", 
-                steps: []
+                notes: `Don't use bleach`,
+                steps: [
+                    {
+                        name: "Whites",
+                        checked: true
+                    },
+                    {
+                        name: "Brights",
+                        checked: false
+                    }
+                ],
+                
             },
             {
                 title: "Yoga",
                 dueDate: "",
                 priority: "notImportant",
                 notes: "",
-                checklist: "",
-                origin: "Default",
-                steps: []
+                steps: [], 
             }
         ],
         completedArray: [
@@ -29,9 +35,7 @@ let projectsArray = [
                 dueDate: "", 
                 priority: "notImportant", 
                 notes: "", 
-                checklist: "",
-                origin: "Default",
-                steps: []
+                steps: [],
             }
         ]
     },
@@ -43,9 +47,7 @@ let projectsArray = [
                 dueDate: "", 
                 priority: "important", 
                 notes: "", 
-                checklist: "",
-                origin: "Default",
-                steps: []
+                steps: [],
             }
         ],
         completedArray: []

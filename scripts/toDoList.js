@@ -2,6 +2,7 @@
 import { projectsArray } from './projectsArray.js'
 import { inputToDo } from './inputToDo.js'
 import { completedList } from './completed.js'
+import { toDoDisplay } from './toDoDisplay.js'
 
 // toDoList Module -- displays each itme in the toDoArray for for the particular project
 
@@ -59,9 +60,11 @@ let toDoList = (function() {
 
         // display toDoCard info to the right
         if (target.matches('div.to-do-wrapper')) {
-            console.log(toDoTitle);
-            console.log(toDoIndex);
-            console.log(toDoObject);
+            // empty objectInfo
+            for (var prop in toDoDisplay.objectInfo) delete toDoDisplay.objectInfo[prop];
+            // render function from the toDoDisplay
+            toDoDisplay.objectInfo = Object.assign(toDoDisplay.objectInfo, toDoObject);
+            toDoDisplay.renderInfo();
         } 
 
         // important toggle delegation
@@ -82,7 +85,6 @@ let toDoList = (function() {
         renderToDoList();   
         completedList.renderCompletedArray();
         completedList.displayTotal();
-          
     }
     
     return {

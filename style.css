@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html, body {
+    font-size: 16px;
+}
+
 body {
     font-family: monospace;
 }
@@ -65,7 +69,7 @@ header {
 .project-delete {
     position: absolute;
     color: gray;
-    right: 5%;
+    right: 1rem;
 }
 
 #project-input-wrapper {
@@ -84,16 +88,17 @@ header {
 #project-plus-button {
     position: absolute;
     height: 1rem;
-    left: 3%;
-    top: 28%;
+    left: .75rem;
+    top: .75rem;
 }
 
 #project-plus-button .fa-plus {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
 }
 
 #project-display {
-    width: 65%;
+    /* border: 1px solid green; */
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,16 +118,16 @@ header {
 #add-to-do {
     width: 100%;
     padding: 1rem;
-    text-indent: 2rem;
+    text-indent: 3rem;
     font-size: 1rem;
 }
 
 #plus-button {
     position: absolute;
-    width: 2.5%;
+    width: .75rem;
     height: 1.5rem;
-    left: 1.5%;
-    top: 30%;
+    left: 1rem;
+    top: 1rem;
 }
 
 .fa-plus {
@@ -138,10 +143,10 @@ header {
 
 #important-input {
     position: absolute;
-    width: 2.5%;
+    width: .75rem;
     height: 1.5rem;
-    right: 1.5%;
-    top: 30%;
+    right: 2.25rem;
+    top: 1rem;
 }
 
 .not-important {
@@ -171,8 +176,8 @@ header {
     font-size: 1rem;
     position: absolute;
     cursor: pointer;
-    right: 2%;
-    top: 33%;
+    right: 1.75rem;
+    top: 1rem;
 }
 
 .card-check {
@@ -180,8 +185,8 @@ header {
     font-size: 1.25rem;
     position: absolute;
     cursor: pointer;
-    left: 1.5%;
-    top: 30%;
+    left: 1rem;
+    top: 1rem;
 }
 
 .card-check:hover {
@@ -196,7 +201,7 @@ header {
     padding: 1rem;
     margin: .5rem 0;
     font-size: 1rem;
-    text-indent: 2rem;
+    text-indent: 3rem;
     cursor: pointer;
 }
 
@@ -211,14 +216,21 @@ header {
     cursor: pointer;
 }
 
+#completed-header h2 {
+    font-size: 1.25rem;
+}
+
 #completed-total {
     margin-left: 1rem;
 }
 
 #expand-container {
+    position: relative;
     color: gray;
     /* border: 1px solid blue; */
+    width: 1.5rem;
     margin-left: auto;
+    margin-right: .5rem;
 }
 
 .card-chevron {
@@ -237,8 +249,8 @@ header {
     font-size: 1.25rem;
     position: absolute;
     cursor: pointer;
-    left: 1.5%;
-    top: 30%;
+    left: 1rem;
+    top: 1rem;
 }
 
 .card-cancel:hover {
@@ -247,8 +259,8 @@ header {
 
 #to-do-display {
     width: 25%;
-    /* border: 2px solid lightblue; */
     background-color: rgba(224, 224, 224, 0.883);
+    display: none;
 }
 
 #to-do-display-container {
@@ -262,10 +274,6 @@ header {
 #to-do-display-container .to-do-wrapper {
     text-indent: 1rem;
     background-color: white;
-}
-
-.to-do-star {
-    right: 4.5%;
 }
 
 .step-card {
@@ -282,7 +290,14 @@ header {
 
 .step-check {
     font-size: 1rem;
-    left: 3%;
+    left: 1rem;
+    top: .75rem;
+}
+
+.step-cancel {
+    font-size: 1rem;
+    left: 1rem;
+    top: .75rem;
 }
 
 .step-delete {
@@ -306,17 +321,18 @@ header {
     font-size: .75rem;
 }
 
-#input-step-plus {
+#step-plus-button {
     position: absolute;
     left: 3%;
     top: 30%;
 }
 
-#input-step-plus .fa-plus {
+#step-plus-button .fa-plus {
     font-size: 1.25rem;
 }
 
 #due-date-wrapper {
+    font-size: .75rem;
     position: relative;
     border: 1px solid orange;
     border-radius: 4px;
@@ -338,6 +354,32 @@ header {
     font-size: 1rem;
 }
 
+#date-picker {
+    border: 1px solid orange;
+    border-radius: 4px;
+    position: absolute;
+    height: 14rem;
+    width: 14rem;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 45%;
+    top: 40%;
+    display: none;
+}
+
+#date-heading {
+    font-size: 1rem;
+    margin-bottom: .75rem;
+}
+
+#due-date-btn {
+    margin-top: 2rem;
+    width: 3rem;
+    height: 2rem;
+}
+
 #notes-wrapper {
     min-height: 50%;
     height: 50%;
@@ -349,3 +391,4 @@ header {
     resize: none;
     padding: 1.25rem;
 }
+

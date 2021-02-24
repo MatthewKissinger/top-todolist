@@ -1,10 +1,13 @@
 // To DO list for the To do app lol
 
-// 1) create a stepFactory function
-// 2) render the steps with the checked value styling
-// 3) when the checkmark is selected for a step
-//  a) the checked value in the object changes to true
+// 1) date picker functional
+//  a) when clicking on due-date-card, make a datepicker appear -- DONE!
+//  b) store the selection made from the datepicker in the object -- DONE!
+//  c) display the duedate for the object in the due-date-card -- DONE!
+//  d) create a delete button for the due-date-card that sets it to empty
+//  e) format the date value to mm/dd/yyyy
 
+// 2) hook up local storage for the app
 
 // Ideas 
 // ** add sounds to the app on completed, deleted, starred, added processes
@@ -17,6 +20,7 @@ import { toDoDisplay } from './toDoDisplay.js'
 
 // cacheDOM for the entire App
 const projectDisplay = document.querySelector('#project-display');
+const toDoInfoContainer = document.querySelector('#to-do-display');
 
 // project list Module
 let projects = (function() {
@@ -76,6 +80,7 @@ function projectDelegation(e) {
         }
         
     } else if (target.matches('div.project-name-card')) {
+        toDoInfoHide();
         inputToDo.projectName.innerText = target.innerText;
         inputToDo.index = projectsArray.findIndex(x => x.name === target.innerText);
         toDoList.rendertoDoList();
@@ -83,6 +88,14 @@ function projectDelegation(e) {
         completedList.displayTotal();
         showProjectsArray();
     }
+}
+
+function toDoInfoHide() {
+    const infoStyles = getComputedStyle(toDoInfoContainer);
+
+    if (infoStyles.display === 'block') {
+        toDoInfoContainer.style.display = 'none';
+    }  
 }
 
 function addProject(e) {

@@ -36,7 +36,8 @@ let inputToDo = (function() {
                     priority = 'notImportant';
                 }
                 let notes = '';
-                let newToDo = new toDoFactory(name, dueDate, priority, notes);
+                let steps = [];
+                let newToDo = new toDoFactory(name, dueDate, priority, notes, steps);
                 index = projectsArray.findIndex(x => x.name === projectName.innerText);
                 
                 projectsArray[index]['toDoArray'].push(newToDo);

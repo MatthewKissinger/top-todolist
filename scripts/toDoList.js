@@ -10,6 +10,7 @@ let toDoList = (function() {
 
     // cache DOM
     const toDoContainer = document.querySelector('#to-do-container');
+    const toDoInfoContainer = document.querySelector('#to-do-display');
     
     // bind events
     toDoContainer.addEventListener('click', toDoDelegation);
@@ -60,6 +61,8 @@ let toDoList = (function() {
 
         // display toDoCard info to the right
         if (target.matches('div.to-do-wrapper')) {
+            // display the toDoInfoContainer
+            toDoInfoDisplay();
             // empty objectInfo
             for (var prop in toDoDisplay.objectInfo) delete toDoDisplay.objectInfo[prop];
             // render function from the toDoDisplay
@@ -78,6 +81,7 @@ let toDoList = (function() {
         }
         }   // checkmark to completed Array delegation
             else if (target.matches('svg.fa-check') || checkDValue === targetDValue) {
+                toDoInfoHide();
                 projectsArray[inputToDo.index]['completedArray'].push(projectsArray[inputToDo.index]['toDoArray'][toDoIndex]);
                 projectsArray[inputToDo.index]['toDoArray'].splice(toDoIndex, 1);    
         }   
@@ -85,6 +89,23 @@ let toDoList = (function() {
         renderToDoList();   
         completedList.renderCompletedArray();
         completedList.displayTotal();
+        return toDoIndex;
+    }
+
+    function toDoInfoDisplay() {
+        const infoStyles = getComputedStyle(toDoInfoContainer);
+
+        if (infoStyles.display === 'none') {
+            toDoInfoContainer.style.display = 'block';
+        }      
+    }
+
+    function toDoInfoHide() {
+        const infoStyles = getComputedStyle(toDoInfoContainer);
+    
+        if (infoStyles.display === 'block') {
+            toDoInfoContainer.style.display = 'none';
+        }  
     }
     
     return {

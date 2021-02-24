@@ -6,9 +6,9 @@ let projectsArray = [
         toDoArray: [
             {
                 title: "Laundry",
-                dueDate: "",
+                dueDate: "2021-02-24",
                 priority: "important",
-                notes: `Don't use bleach`,
+                notes: "",
                 steps: [
                     {
                         name: "Whites",
@@ -55,7 +55,7 @@ let projectsArray = [
 ];
 
 function showProjectsArray() {
-    console.log(projectsArray);
+    // console.log(projectsArray);
 }
 
 export { projectsArray, showProjectsArray }

@@ -1,5 +1,5 @@
-import { toDoList } from './toDoList.js'
-import { projectsArray, showProjectsArray } from './projectsArray.js'
+
+import { projectsArray, setLocalStorage } from './arrayStorage.js'
 import { inputToDo } from './inputToDo.js'
 
 // module to display the toDo contents when a toDo Card is selected from the list
@@ -17,6 +17,7 @@ let toDoDisplay = (function() {
     const datePicker = document.querySelector("#date-picker");
     let dueDateInput = document.querySelector('#due-date');
     let dueDateButton = document.querySelector('#due-date-btn');
+    let dueDateDelete = document.querySelector('#due-date-delete');
     let notesContainer = document.querySelector('#to-do-notes');
     let objectInfo = {};
 
@@ -27,6 +28,7 @@ let toDoDisplay = (function() {
     dueDate.addEventListener('click', datePickerDisplay);
     document.addEventListener('mouseup', datePickerHide);
     dueDateButton.addEventListener('click', updateDate);
+    dueDateDelete.addEventListener('click', clearDueDate);
     notesContainer.addEventListener('blur', updateNotes);
 
     function renderInfo() {
@@ -37,6 +39,7 @@ let toDoDisplay = (function() {
         });
         dateTemplate();
         notesTemplate();
+        setLocalStorage();
     }
 
     function titleTemplate() {
@@ -122,16 +125,17 @@ let toDoDisplay = (function() {
     }
 
     function dateTemplate() {
+        let index = projectsArray[inputToDo.index]['toDoArray'].findIndex(x => x.title === objectInfo['title']);
         dueDate.innerHTML = '';
         let dateIcon = document.createElement('i');
         dateIcon.classList.add('fas', 'fa-calendar-alt');
 
         let dateInfo = document.createElement('div');
         dateInfo.classList.add('date-display');
-        if (objectInfo['dueDate'] === '') {
+        if (projectsArray[inputToDo.index]['toDoArray'][index]['dueDate'] === '') {
             dateInfo.innerText = `add a due date`;
         } else {
-            dateInfo.innerText = objectInfo['dueDate'];
+            dateInfo.innerText = projectsArray[inputToDo.index]['toDoArray'][index]['dueDate'];
         }
         dueDate.appendChild(dateIcon);
         dueDate.appendChild(dateInfo);
@@ -159,10 +163,55 @@ let toDoDisplay = (function() {
         projectsArray[inputToDo.index]['toDoArray'][index]['dueDate'] = dueDateInput.value;
         let dateDisplay = document.getElementsByClassName('date-display');
         if (dueDateInput.value !== '') {
-            dateDisplay[0].innerText = dueDateInput.value;
+            let date = dueDateInput.value.split('-');
+            let d = new Date(date[0], date[1] - 1, date[2]);
+
+            // need to convert these values with some date objects that I will create
+            let dayIndex = d.getDay();
+            let dayName = days[dayIndex];
+            let monthIndex = d.getMonth();
+            let monthName = months[monthIndex];
+            const formattedDate = `${dayName}, ${d.getDate()} ${monthName} ${d.getFullYear()}`;
+
+            projectsArray[inputToDo.index]['toDoArray'][index]['dueDate'] = formattedDate;
+            dateDisplay[0].innerText = formattedDate;
         }
-        
+        setLocalStorage();
         datePicker.style.display = 'none';
+    }
+
+    function clearDueDate() {
+        let index = projectsArray[inputToDo.index]['toDoArray'].findIndex(x => x.title === objectInfo['title']);
+        projectsArray[inputToDo.index]['toDoArray'][index]['dueDate'] = '';
+        let dateDisplay = document.getElementsByClassName('date-display');
+        dateDisplay[0].innerText = "add a due date";
+        setLocalStorage();
+        datePicker.style.display = 'none';
+    }
+
+    const days = {
+        0: 'Sun',
+        1: 'Mon',
+        2: 'Tue',
+        3: 'Wed',
+        4: 'Thu',
+        5: 'Fri',
+        6: 'Sat'
+    }
+
+    const months = {
+        0: 'Jan',
+        1: 'Feb',
+        2: 'Mar',
+        3: 'Apr',
+        4: 'May',
+        5: 'Jun',
+        6: 'Jul',
+        7: 'Aug',
+        8: 'Sep',
+        9: 'Oct',
+        10: 'Nov',
+        11: 'Dec'
     }
         
     function notesTemplate() {

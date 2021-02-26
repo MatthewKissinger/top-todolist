@@ -1,4 +1,4 @@
-import { projectsArray } from './projectsArray.js'
+import { projectsArray, setLocalStorage } from './arrayStorage.js'
 import { toDoList } from './toDoList.js'
 
 // input toDo Module
@@ -42,6 +42,7 @@ let inputToDo = (function() {
                 
                 projectsArray[index]['toDoArray'].push(newToDo);
                 toDoList.rendertoDoList();
+                setLocalStorage();
                 inputField.value = '';
                 importantInputReset();
             }

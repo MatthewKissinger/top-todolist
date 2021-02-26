@@ -1,4 +1,4 @@
-import { projectsArray } from './projectsArray.js';
+import { projectsArray, setLocalStorage } from './arrayStorage.js';
 import { toDoList } from './toDoList.js'
 import { inputToDo } from './inputToDo.js'
 
@@ -33,6 +33,7 @@ let completedList = (function() {
         projectsArray[inputToDo.index].completedArray.forEach(item => {
             completedContainer.appendChild(template(item['title'], item['priority']));
         }); 
+        setLocalStorage();
     }
     
     function template(title, priority) {

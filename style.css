@@ -374,10 +374,15 @@ header {
     margin-bottom: .75rem;
 }
 
-#due-date-btn {
-    margin-top: 2rem;
-    width: 3rem;
+#due-date {
+    cursor: pointer;
+}
+
+#due-date-btn, #due-date-delete {
+    margin-top: 1.5rem;
+    width: 3.5rem;
     height: 2rem;
+    cursor: pointer;
 }
 
 #notes-wrapper {

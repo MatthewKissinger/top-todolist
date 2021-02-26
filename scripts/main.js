@@ -1,25 +1,15 @@
 // To DO list for the To do app lol
 
-// 1) date picker functional
-//  a) when clicking on due-date-card, make a datepicker appear -- DONE!
-//  b) store the selection made from the datepicker in the object -- DONE!
-//  c) display the duedate for the object in the due-date-card -- DONE!
-//  d) create a delete button for the due-date-card that sets it to empty
-//  e) format the date value to mm/dd/yyyy
-
-// 2) hook up local storage for the app
-
 // Ideas 
+// ** make the app responsive
 // ** add sounds to the app on completed, deleted, starred, added processes
 
-import { projectsArray, showProjectsArray } from './projectsArray.js'
+import { projectsArray, setLocalStorage, showProjectsArray } from './arrayStorage.js'
 import { completedList } from './completed.js'
 import { toDoList } from './toDoList.js'
 import { inputToDo } from './inputToDo.js'
-import { toDoDisplay } from './toDoDisplay.js'
 
 // cacheDOM for the entire App
-const projectDisplay = document.querySelector('#project-display');
 const toDoInfoContainer = document.querySelector('#to-do-display');
 
 // project list Module
@@ -43,6 +33,9 @@ function renderProjectList() {
     projectsArray.forEach(project => {
         projectList.appendChild(template(project['name']));
     })
+    setLocalStorage();
+    showProjectsArray();
+    completedList.displayTotal();
 };
 
 // template for rendering project card

@@ -1,12 +1,12 @@
 
 // default project created for demo, testing, and styling purposes
-let projectsArray = [
+let _projectsArray = [
     {
         name: "Default", 
         toDoArray: [
             {
                 title: "Laundry",
-                dueDate: "2021-02-24",
+                dueDate: "Sat, 6 Mar 2021",
                 priority: "important",
                 notes: "",
                 steps: [
@@ -54,8 +54,22 @@ let projectsArray = [
     }
 ];
 
-function showProjectsArray() {
-    // console.log(projectsArray);
+if (localStorage['mattToDoArray'] === undefined) {
+    console.log('empty');
+    localStorage.setItem('mattToDoArray', JSON.stringify(_projectsArray));
+} 
+
+let projectsArray = JSON.parse(localStorage.getItem('mattToDoArray'));
+console.log(localStorage);
+
+localStorage.setItem('mattToDoArray', JSON.stringify(projectsArray));
+
+function setLocalStorage() {
+    localStorage.setItem('mattToDoArray', JSON.stringify(projectsArray));
 }
 
-export { projectsArray, showProjectsArray }
+function showProjectsArray() {
+    console.log(projectsArray);
+}
+
+export { projectsArray, setLocalStorage, showProjectsArray }

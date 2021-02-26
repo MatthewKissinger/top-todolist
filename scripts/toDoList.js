@@ -1,5 +1,5 @@
 
-import { projectsArray } from './projectsArray.js'
+import { projectsArray, setLocalStorage } from './arrayStorage.js'
 import { inputToDo } from './inputToDo.js'
 import { completedList } from './completed.js'
 import { toDoDisplay } from './toDoDisplay.js'
@@ -22,6 +22,7 @@ let toDoList = (function() {
         projectsArray[inputToDo.index].toDoArray.forEach(item => {
             toDoContainer.appendChild(toDoTemplate(item['title'], item['priority']));
         }); 
+        setLocalStorage();
     }
     
     function toDoTemplate(title, priority) {
